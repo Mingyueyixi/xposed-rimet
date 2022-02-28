@@ -43,6 +43,9 @@ android {
     }
     buildTypes {
         release {
+            applicationIdSuffix ".custom"
+            versionNameSuffix "X"
+
             applicationVariants.all { variant ->
                 variant.outputs.all {
                     outputFileName = "${project.name}_${variant.flavorName}_v${variant.versionName}.apk"
@@ -53,6 +56,8 @@ android {
             signingConfig signingConfigs.sky
         }
         debug {
+            applicationIdSuffix ".custom"
+            versionNameSuffix "X"
             minifyEnabled false
             signingConfig signingConfigs.sky
         }
