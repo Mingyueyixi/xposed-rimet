@@ -17,13 +17,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.sky.xposed.rimet"
         minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 27
-        versionName "1.4.1"
+        targetSdkVersion 31
+        versionCode 28
+        versionName "1.4.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             abiFilters "armeabi-v7a"//, "arm64-v8a", "x86","arm64-v8a","x86_64"
@@ -32,6 +32,14 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs {
+        sky {
+            storeFile file("${rootDir}/keyStore/app-test.jks")
+            storePassword "123456"
+            keyAlias "app"
+            keyPassword "123456"
+        }
     }
     buildTypes {
         release {
@@ -42,9 +50,11 @@ android {
             }
             minifyEnabled true // 已开源
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.sky
         }
         debug {
             minifyEnabled false
+            signingConfig signingConfigs.sky
         }
     }
 
