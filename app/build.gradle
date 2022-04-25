@@ -22,7 +22,7 @@ android {
         applicationId "com.sky.xposed.rimet"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 28
+        versionCode 32
         versionName "1.4.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -37,7 +37,7 @@ android {
         sky {
             storeFile file("${rootDir}/keyStore/app-test.jks")
             storePassword "123456"
-            keyAlias "app"
+            keyAlias "app-test"
             keyPassword "123456"
         }
     }
@@ -58,7 +58,8 @@ android {
         debug {
             applicationIdSuffix ".custom"
             versionNameSuffix "X"
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.sky
         }
     }

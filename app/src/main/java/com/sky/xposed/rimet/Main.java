@@ -87,7 +87,12 @@ public class Main implements IXposedHookLoadPackage {
                     "com.alibaba.android.rimet.biz.SplashActivity", "onResume")
                     .after(param -> handleLoadPackage(param, lpParam));
 
-
+            try {
+                Object version = XposedHelpers.getStaticObjectField(Class.forName("com.alibaba.android.rimet.BuildConfig").getClass(), "VERSION_NAME");
+                Log.e(">>>叮当", version + "");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
 
         } catch (Throwable throwable) {
             StringWriter sw = new StringWriter();

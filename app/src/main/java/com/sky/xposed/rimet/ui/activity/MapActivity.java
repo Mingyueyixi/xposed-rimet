@@ -28,6 +28,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,6 +65,7 @@ import com.sky.xposed.rimet.R;
 import com.sky.xposed.rimet.ui.adapter.SearchResultAdapter;
 import com.sky.xposed.rimet.ui.util.DialogUtil;
 import com.sky.xposed.rimet.ui.util.MapUtil;
+import com.sky.xposed.rimet.util.AppSigningUtil;
 import com.sky.xposed.ui.util.PermissionUtil;
 import com.sky.xposed.ui.util.ViewUtil;
 
@@ -358,6 +360,7 @@ public class MapActivity extends Activity implements LocationSource, AdapterView
                     || aMapLocation == null || aMapLocation.getErrorCode() != 0) {
                 // 定位失败了
                 deactivate();
+
                 ToastUtil.show("定位失败,请开启定位后再重新尝试!");
                 return;
             }
